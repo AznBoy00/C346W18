@@ -1,6 +1,6 @@
 /**
- * Class Withdrawer
- * Implements Withdrawer thread class.
+ * Class Depositor
+ * Implements Depositor thread class.
  *
  * @author Malek Barhoush, mbarhoush@hotmail.com;
  *
@@ -8,21 +8,19 @@
  * $Revision: 1.0 $
  * $Last Revision Date: 2018/01/06
  */
-package task3;
+package task4;
 
-public class Withdrawer extends Thread {
+public class Depositor extends Thread {
 
     private Account account;
 
-    public Withdrawer(Account account) {
+    public Depositor(Account account) {
         this.account = account;
     }
 
     public void run() {
-
-        // Withdraw 10 CAD into instance variable account
         for (int i = 0; i < 10000000; i++) {
-            account.withdraw(10);
+            account.debosit(10);
 
             /*try {
                 sleep(10);

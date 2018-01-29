@@ -8,7 +8,7 @@
  * $Revision: 1.0 $
  * $Last Revision Date: 2018/01/06
  */
-package task3;
+package task4;
 
 public class Account {
 
@@ -151,23 +151,21 @@ public class Account {
      *
      * @param amount A double that represents a deposit amount
      */
-    public void debosit(double amount) {
-        synchronized(this) {
-            // Waste some time doing fake computations
-            // do not remove or modify any of the following 3 statements
-            double k = 999999999;
-            for (int i = 0; i < 100; i++) {
-                k = k / 2;
-            }
+    public synchronized void debosit(double amount) {
+        // Waste some time doing fake computations
+        // do not remove or modify any of the following 3 statements
+        double k = 999999999;
+        for (int i = 0; i < 100; i++) {
+            k = k / 2;
+        }
 
-            balance = balance + amount;
+        balance = balance + amount;
 
-            // Waste some time doing fake computations
-            // do not remove or modify any of the following 3 statements
-            k = 999999999;
-            for (int i = 0; i < 100; i++) {
-                k = k / 2;
-            }
+        // Waste some time doing fake computations
+        // do not remove or modify any of the following 3 statements
+        k = 999999999;
+        for (int i = 0; i < 100; i++) {
+            k = k / 2;
         }
     }
 
@@ -176,23 +174,21 @@ public class Account {
      *
      * @param amount A double that represents a withdrawal amount
      */
-    public void withdraw(double amount) {
-        synchronized(this) {
-            // Waste some time doing fake computations
-            // do not remove or modify any of the following 3 statements
-            double k = 999999999;
-            for (int i = 0; i < 100; i++) {
-                k = k / 2;
-            }
+    public synchronized void withdraw(double amount) {
+        // Waste some time doing fake computations
+        // do not remove or modify any of the following 3 statements
+        double k = 999999999;
+        for (int i = 0; i < 100; i++) {
+            k = k / 2;
+        }
 
-            balance = balance - amount;
+        balance = balance - amount;
 
-            // Waste some time doing fake computations
-            // do not remove or modify any of the following 3 statements
-            k = 999999999;
-            for (int i = 0; i < 100; i++) {
-                k = k / 2;
-            }
+        // Waste some time doing fake computations
+        // do not remove or modify any of the following 3 statements
+        k = 999999999;
+        for (int i = 0; i < 100; i++) {
+            k = k / 2;
         }
     }
 

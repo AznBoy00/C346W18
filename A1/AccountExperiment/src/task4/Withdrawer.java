@@ -8,7 +8,7 @@
  * $Revision: 1.0 $
  * $Last Revision Date: 2018/01/06
  */
-package task3;
+package task4;
 
 public class Withdrawer extends Thread {
 
