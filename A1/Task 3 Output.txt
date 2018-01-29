@@ -22,6 +22,6 @@ Account: 7890 	Name: Tom 	Balance:	7000.0
 Account: 8901 	Name: Lisa 	Balance:	8000.0
 Account: 9012 	Name: Sam 	Balance:	9000.0
 Account: 4321 	Name: Ted 	Balance:	10000.0
-Elapsed time in milliseconds 952
-Elapsed time in seconds is 0.952
+Elapsed time in milliseconds 971
+Elapsed time in seconds is 0.971
 BUILD SUCCESSFUL (total time: 1 second)
