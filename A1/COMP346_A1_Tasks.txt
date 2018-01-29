@@ -1,0 +1,6 @@
+Task 1: 
+
+The program performs an inconsistent run, based on the requirements, since when repeatedly compiled, it yields different outputs for each bank account every time. Thus, the thread execution is not atomic because threads can interfere with each other in mid-execution. In other words, context switching occurs during one of the processes before it finishes its execution, hence there is no atomicity in the interference which leads to a memory type related errors.
+
+Task 2: 
+
