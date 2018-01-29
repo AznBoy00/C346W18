@@ -5,3 +5,4 @@ The program performs an inconsistent run, based on the requirements, since when 
 Task 2: 
 
 Threads may not execute sequentially since the operating system/JVM determines the order in which the threads are executed. At first, the thread is in the new state (when a instance of Thread class is created), then the thread is in the runnable state after invoking the start() method, afterwards if the thread is in the thread scheduler, the thread is in the running state, thereafter the thread is in the non runnable state if not eligible to run and still alive and finally the thread is in the dead state when the run() method exits. In other words, the states are: New, Runnable, Running, Non-Runnable and Terminated. The consistency of the accounts are not preserved since the amount in the account varies/changes each time the program is compiled.
+
