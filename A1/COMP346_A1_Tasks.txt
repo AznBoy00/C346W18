@@ -6,6 +6,9 @@ Task 2:
 
 Threads may not execute sequentially since the operating system/JVM determines the order in which the threads are executed. At first, the thread is in the new state (when a instance of Thread class is created), then the thread is in the runnable state after invoking the start() method, afterwards if the thread is in the thread scheduler, the thread is in the running state, thereafter the thread is in the non runnable state if not eligible to run and still alive and finally the thread is in the dead state when the run() method exits. In other words, the states are: New, Runnable, Running, Non-Runnable and Terminated. Furthermore, the consistency of the accounts are not preserved since the amount in the account varies/changes each time the program is compiled.
 
+Taks 3: Please see programming files related to this task
+Taks 4: Please see programming files related to this task
+
 Task 5: 
 
 A synchronized block is better since it allows the user to synchronize on a different object and limit the scope of synchronization. In other words, it allows to synchronize more specifically the critical section of the code. On the other hand, the method synchronization locks in the current instantiated object for the whole duration of the method, even though there may be a part of the method that does not require synchronization.
