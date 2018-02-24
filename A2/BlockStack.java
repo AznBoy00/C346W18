@@ -99,6 +99,30 @@ class BlockStack {
         this.acStack[this.iTop--] = '$'; // Leave prev. value undefined
         return cBlock;
     }
+    
+    public int getITop() {
+        return this.iTop;
+    }
+    
+    public int getTop() {
+        return this.iTop;
+    }
+    
+    public int getISize() {
+        return this.iSize;
+    }
+    
+    public int getSize() {
+        return this.iSize;
+    }
+    
+    public int getAccessCounter() {
+        return this.acStack.length; // probably not right
+    }
+    
+    public boolean isEmpty() {
+        return (this.iTop == -1);
+    }
 }
 
 // EOF
