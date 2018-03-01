@@ -32,7 +32,7 @@ public class BlockManager {
     /**
      * For atomicity
      */
-    //private static Semaphore mutex = new Semaphore(...);
+    private static Semaphore mutex = new Semaphore (1);
 
     /*
 	 * For synchronization
@@ -142,6 +142,7 @@ public class BlockManager {
         private char cCopy;
 
         public void run() {
+        	mutex.P(); //protecting the critical section (preventing other threads to interrupt) 
             System.out.println("AcquireBlock thread [TID=" + this.iTID + "] starts executing.");
 
             phase1();
@@ -173,6 +174,7 @@ public class BlockManager {
             phase2();
 
             System.out.println("AcquireBlock thread [TID=" + this.iTID + "] terminates.");
+            mutex.V(); //now threads can interrupt
         }
     } // class AcquireBlock
 
@@ -187,6 +189,7 @@ public class BlockManager {
         private char cBlock = 'a';
 
         public void run() {
+        	mutex.P(); //protecting the critical section (preventing other threads to interrupt) 
             System.out.println("ReleaseBlock thread [TID=" + this.iTID + "] starts executing.");
 
             phase1();
@@ -220,6 +223,7 @@ public class BlockManager {
             phase2();
 
             System.out.println("ReleaseBlock thread [TID=" + this.iTID + "] terminates.");
+            mutex.V();//now threads can interrupt
         }
     } // class ReleaseBlock
 
@@ -229,6 +233,7 @@ public class BlockManager {
     static class CharStackProber extends BaseThread {
 
         public void run() {
+        	mutex.P();//protecting the critical section (preventing other threads to interrupt) 
             phase1();
 
             try {
@@ -254,6 +259,7 @@ public class BlockManager {
             }
 
             phase2();
+            mutex.V();//now threads can interrupt
 
         }
     } // class CharStackProber
