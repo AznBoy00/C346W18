@@ -41,7 +41,7 @@ public class BlockManager
 	/**
 	 * s1 is to make sure phase I for all is done before any phase II begins
 	 */
-	//private static Semaphore s1 = new Semaphore(...);
+	private static Semaphore s1 = new Semaphore(0);
 
 	/**
 	 * s2 is for use in conjunction with Thread.turnTestAndSet() for phase II proceed
@@ -49,7 +49,9 @@ public class BlockManager
 	 */
 	//private static Semaphore s2 = new Semaphore(...);
 
-
+	//the counter to be used with the semaphores
+	private static int counter = 0;
+	
 	// The main()
 	public static void main(String[] argv)
 	{
@@ -153,11 +155,14 @@ public class BlockManager
 
 		public void run()
 		{
-			mutex.P(); //stops any other threads from interrupting - protects CS
+			
 			System.out.println("AcquireBlock thread [TID=" + this.iTID + "] starts executing.");
 
+			mutex.P(); //stops any other threads from interrupting - protects CS
 			phase1();
-
+			counter++;
+			if (counter==10){s1.V();} //only signals as soon as counter gets 10 phase1 completed (ie. all of them)
+			mutex.V();
 
 			try
 			{
@@ -190,11 +195,12 @@ public class BlockManager
 				System.exit(1);
 			}
 
+			s1.P(); //can only go after counter has signaled
 			phase2();
+			s1.V();
 
 
 			System.out.println("AcquireBlock thread [TID=" + this.iTID + "] terminates.");
-			mutex.V(); //allow other threads to interrupt now
 		}
 	} // class AcquireBlock
 
@@ -211,11 +217,15 @@ public class BlockManager
 
 		public void run()
 		{
-			mutex.P(); //stops any other threads from interrupting - protects CS
+	
 			System.out.println("ReleaseBlock thread [TID=" + this.iTID + "] starts executing.");
 
-
+			
+			mutex.P(); //stops any other threads from interrupting - protects CS
 			phase1();
+			counter++;
+			if (counter==10){s1.V();} //only signals as soon as counter gets 10 phase1 completed (ie. all of them)
+			mutex.V();
 
 
 			try
@@ -251,11 +261,12 @@ public class BlockManager
 			}
 
 
+			s1.P(); //can only go after counter has signaled
 			phase2();
+			s1.V();
 
 
 			System.out.println("ReleaseBlock thread [TID=" + this.iTID + "] terminates.");
-			mutex.V(); //allows other threads to interrupt now
 		}
 	} // class ReleaseBlock
 
@@ -269,6 +280,9 @@ public class BlockManager
 		{
 			mutex.P(); //stops any other threads from interrupting - protects CS
 			phase1();
+			counter++;
+			if (counter==10){s1.V();} //only signals as soon as counter gets 10 phase1 completed (ie. all of them)
+			mutex.V();
 
 
 			try
@@ -298,8 +312,9 @@ public class BlockManager
 			}
 
 
+			s1.P(); //can only go after counter has signaled
 			phase2();
-			mutex.V(); //allows other threads to interrupt now
+			s1.V();
 
 		}
 	} // class CharStackProber
