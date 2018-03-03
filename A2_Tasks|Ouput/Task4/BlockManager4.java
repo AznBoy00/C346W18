@@ -161,7 +161,7 @@ public class BlockManager
 			mutex.P(); //stops any other threads from interrupting - protects CS
 			phase1();
 			counter++;
-			if (counter==10){s1.V();} //only signals as soon as counter gets 10 phase1 completed (ie. all of them)
+			if (counter==10){s1.V();} //only signals as soon as counter gets 10 phase1 completed, essentially all of them
 			mutex.V();
 
 			try
@@ -224,7 +224,7 @@ public class BlockManager
 			mutex.P(); //stops any other threads from interrupting - protects CS
 			phase1();
 			counter++;
-			if (counter==10){s1.V();} //only signals as soon as counter gets 10 phase1 completed (ie. all of them)
+			if (counter==10){s1.V();} //only signals as soon as counter gets 10 phase1 completed, essentially all of them
 			mutex.V();
 
 
@@ -281,7 +281,7 @@ public class BlockManager
 			mutex.P(); //stops any other threads from interrupting - protects CS
 			phase1();
 			counter++;
-			if (counter==10){s1.V();} //only signals as soon as counter gets 10 phase1 completed (ie. all of them)
+			if (counter==10){s1.V();} //only signals as soon as counter gets 10 phase1 completed, essentially all of them
 			mutex.V();
 
 

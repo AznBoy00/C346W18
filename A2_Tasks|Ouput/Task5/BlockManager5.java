@@ -41,12 +41,12 @@ public class BlockManager {
     /**
      * s1 is to make sure phase I for all is done before any phase II begins
      */
-    //private static Semaphore s1 = new Semaphore(...);
     /**
      * s2 is for use in conjunction with Thread.turnTestAndSet() for phase II
      * proceed in the thread creation order
      */
     private static Semaphore s2 = new Semaphore(1);
+	//the counter to be used with the semaphores
     private static int counter = 0; 
     // The main()
     public static void main(String[] argv) {
@@ -145,10 +145,10 @@ public class BlockManager {
 
         public void run() {
             System.out.println("AcquireBlock thread [TID=" + this.iTID + "] starts executing.");
-            mutex.P(); //protecting the critical section (preventing other threads to interrupt) 
+            mutex.P(); //protecting the critical section (preventing other threads from interrupt) 
             phase1();
             counter++;
-			if (counter==10){//only signals as soon as counter gets 10 phase1 completed (ie. all of them)
+			if (counter==10){//only signals as soon as counter gets 10 phase1 completed, essentially all of them
 				s1.V();
 				}   
 			mutex.V();
@@ -179,7 +179,7 @@ public class BlockManager {
             s1.V();
             while(true){
 				s2.P();
-				if (turnTestAndSet()){ //keeps "waiting" until it is this thread's turn
+				if (turnTestAndSet()){ //waits until this thread's turn
 					phase2();
 					System.out.println("AcquireBlock thread [TID=" + this.iTID + "] terminates.");
 					break;
@@ -203,10 +203,10 @@ public class BlockManager {
         public void run() {
         	System.out.println("ReleaseBlock thread [TID=" + this.iTID + "] starts executing.");
         	
-        	mutex.P(); //protecting the critical section (preventing other threads to interrupt) 
+        	mutex.P(); //protecting the critical section (preventing other threads from interrupt) 
         	phase1();
         	counter++;
-            if (counter==10){//only signals as soon as counter gets 10 phase1 completed (ie. all of them)
+            if (counter==10){//only signals as soon as counter gets 10 phase1 completed, essentially all of them
             	s1.V();
             	}
 			mutex.V();
@@ -241,7 +241,7 @@ public class BlockManager {
             s1.V();
             while(true){
 				s2.P();
-				if (turnTestAndSet()){ //keeps "waiting" until it is this thread's turn
+				if (turnTestAndSet()){ ////waits until this thread's turn
 					phase2();
 					System.out.println("ReleaseBlock thread [TID=" + this.iTID + "] terminates.");
 					break;
@@ -258,10 +258,10 @@ public class BlockManager {
     static class CharStackProber extends BaseThread {
 
         public void run() {
-        	mutex.P(); //protecting the critical section (preventing other threads to interrupt) 
+        	mutex.P(); //protecting the critical section (preventing other threads from interrupt) 
         	phase1();
         	counter++;
-            if (counter==10){//only signals as soon as counter gets 10 phase1 completed (ie. all of them)
+            if (counter==10){//only signals as soon as counter gets 10 phase1 completed, essentially all of them
             	s1.V();
             	}
 			mutex.V();
@@ -292,7 +292,7 @@ public class BlockManager {
             s1.V();
             while(true){
 				s2.P();
-				if (turnTestAndSet()){ //keeps "waiting" until it is this thread's turn
+				if (turnTestAndSet()){ ////waits until this thread's turn
 					phase2();
 					break;
 				}
