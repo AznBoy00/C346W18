@@ -41,7 +41,7 @@ public class BlockManager
 	/**
 	 * s1 is to make sure phase I for all is done before any phase II begins
 	 */
-	private static Semaphore s1 = new Semaphore(0);
+	private static Semaphore s1 = new Semaphore(0);// TASK$ : 0 => in order for phase2 to wait until phase1 complete
 
 	/**
 	 * s2 is for use in conjunction with Thread.turnTestAndSet() for phase II proceed
@@ -50,7 +50,7 @@ public class BlockManager
 	//private static Semaphore s2 = new Semaphore(...);
 
 	//the counter to be used with the semaphores
-	private static int counter = 0;
+	private static int counter = 0; //TASK4 phase1 counter, ++ once phase1 complete
 	
 	// The main()
 	public static void main(String[] argv)
@@ -161,7 +161,7 @@ public class BlockManager
 			mutex.P(); //stops any other threads from interrupting - protects CS
 			phase1();
 			counter++;
-			if (counter==10){s1.V();} //only signals as soon as counter gets 10 phase1 completed, essentially all of them
+			if (counter==10){s1.V();} //signals once all 10 threads are completed in phase1
 			mutex.V();
 
 			try
@@ -220,11 +220,11 @@ public class BlockManager
 	
 			System.out.println("ReleaseBlock thread [TID=" + this.iTID + "] starts executing.");
 
-			
+			//TASK4
 			mutex.P(); //stops any other threads from interrupting - protects CS
 			phase1();
 			counter++;
-			if (counter==10){s1.V();} //only signals as soon as counter gets 10 phase1 completed, essentially all of them
+			if (counter==10){s1.V();} //signals once all 10 threads are completed in phase1
 			mutex.V();
 
 
@@ -281,7 +281,7 @@ public class BlockManager
 			mutex.P(); //stops any other threads from interrupting - protects CS
 			phase1();
 			counter++;
-			if (counter==10){s1.V();} //only signals as soon as counter gets 10 phase1 completed, essentially all of them
+			if (counter==10){s1.V();} //signals once all 10 threads are completed in phase1
 			mutex.V();
 
 

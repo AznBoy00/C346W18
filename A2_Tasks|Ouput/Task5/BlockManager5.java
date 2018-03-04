@@ -45,7 +45,7 @@ public class BlockManager {
      * s2 is for use in conjunction with Thread.turnTestAndSet() for phase II
      * proceed in the thread creation order
      */
-    private static Semaphore s2 = new Semaphore(1);
+    private static Semaphore s2 = new Semaphore(1); //TASK5 s2=1 => at most one thread can reach the CS
 	//the counter to be used with the semaphores
     private static int counter = 0; 
     // The main()
@@ -175,15 +175,18 @@ public class BlockManager {
                 reportException(e);
                 System.exit(1);
             }
-            s1.P(); //can only go after counter has signaled
+            s1.P(); //can only go after counter has signaled (pass s1 if all phase 1 complete)
             s1.V();
-            while(true){
+            while(true){ //loop until thread's turn to go
+				//avoid deadlock by inserting lock inside loop
 				s2.P();
+				//return true when thread's turn to go
 				if (turnTestAndSet()){ //waits until this thread's turn
 					phase2();
 					System.out.println("AcquireBlock thread [TID=" + this.iTID + "] terminates.");
 					break;
 				}
+				//signals to prevent deadlock
 				s2.V();
             }
             s2.V();
@@ -237,15 +240,18 @@ public class BlockManager {
                 System.exit(1);
             }
             
-            s1.P(); //can only go after counter has signaled
+            s1.P(); //can only go after counter has signaled (pass s1 if all phase 1 complete)
             s1.V();
-            while(true){
+            while(true){//loop until thread's turn to go
+				//avoid deadlock by inserting lock inside loop
 				s2.P();
+				//return true when thread's turn to go
 				if (turnTestAndSet()){ ////waits until this thread's turn
 					phase2();
 					System.out.println("ReleaseBlock thread [TID=" + this.iTID + "] terminates.");
 					break;
 				}
+				//signals to prevent deadlock
 				s2.V();
             }
             s2.V();
@@ -288,14 +294,17 @@ public class BlockManager {
                 System.exit(1);
             }
 
-            s1.P(); //can only go after counter has signaled
+            s1.P(); //can only go after counter has signaled (pass s1 if all phase 1 complete)
             s1.V();
-            while(true){
+            while(true){//loop until thread's turn to go
+				//avoid deadlock by inserting lock inside loop
 				s2.P();
+				//return true when thread's turn to go
 				if (turnTestAndSet()){ ////waits until this thread's turn
 					phase2();
 					break;
 				}
+				//signals to prevent deadlock
 				s2.V();
 			}
 			s2.V();

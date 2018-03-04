@@ -109,7 +109,7 @@ class BlockStack {
         return cBlock;
     }
     
-    public int getITop() {
+    public int getITop() {//return index of top element
         return this.iTop;
     }
     
@@ -117,7 +117,7 @@ class BlockStack {
         return this.iTop;
     }
     
-    public int getISize() {
+    public int getISize() {// return stack size
         return this.iSize;
     }
     
@@ -125,11 +125,11 @@ class BlockStack {
         return this.iSize;
     }
     
-    public int getAccessCounter() {
+    public int getAccessCounter() {//get stackAccessCounter
         return this.stackAccessCounter;
     }
     
-    public boolean isEmpty() {
+    public boolean isEmpty() { //return true if stack is empty
         return (this.iTop == -1);
     }
 }

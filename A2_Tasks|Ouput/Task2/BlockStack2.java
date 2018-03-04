@@ -70,6 +70,7 @@ class BlockStack {
     }
 
     /**
+	 * Task2
      * Picks a value from the top without modifying the stack
      *
      * @return top element of the stack, char
@@ -80,6 +81,7 @@ class BlockStack {
     }
 
     /**
+	 *Task2
      * Returns arbitrary value from the stack array
      *
      * @return the element, char
@@ -90,6 +92,7 @@ class BlockStack {
     }
 
     /**
+	 * TASK2
      * Standard push operation
      */
     public void push(final char pcBlock) {
@@ -108,7 +111,7 @@ class BlockStack {
 
     /**
      * Standard pop operation
-     *
+     *TASK2
      * @return ex-top element of the stack, char
      */
     public char pop() {
