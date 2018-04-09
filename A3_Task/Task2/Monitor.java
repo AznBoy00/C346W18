@@ -61,7 +61,6 @@ public class Monitor
 		states[Tid] = State.EATING;
 		takeChopsticks(Tid);
 		eatPriority.remove(Tid);
-		testFree(); // call method to check..
 	}
 
 	/**
@@ -74,7 +73,6 @@ public class Monitor
 		returnChopsticks(Tid);
 		states[Tid] = State.THINKING;
 		this.notifyAll();
-		testFree(); // call method to check..
 	}
 
 	/**
@@ -94,7 +92,6 @@ public class Monitor
 		someoneTalking = true;
 		states[Tid] = State.TALKING;
 		talkPriority.remove(Tid);
-		testFree();
 	}
 
 	/**
@@ -106,7 +103,7 @@ public class Monitor
 		int Tid = piTID - 1;
 		states[Tid] = State.THINKING;
 		someoneTalking = false;
-		testFree();
+		this.notifyAll();
 	}
 	private synchronized int getLeft(int i){
 		return Math.floorMod((i - 1), (numOfPhil));
@@ -129,9 +126,6 @@ public class Monitor
 		chopsticks[getRight(i)] = true;
 	}
 
-	private synchronized void testFree(){
-
-	}
 }
 
 // EOF
