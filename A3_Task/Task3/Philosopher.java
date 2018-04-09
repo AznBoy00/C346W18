@@ -1,4 +1,4 @@
-package Task2;
+package Task3;
 
 import Task2.common.BaseThread;
 import java.util.logging.Level;

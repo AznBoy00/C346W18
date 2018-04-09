@@ -1,3 +1,5 @@
+package Task1;
+
 /**
  * Class Monitor
  * To synchronize dining philosophers.
@@ -49,7 +51,7 @@ public class Monitor
 	 * Only one philopher at a time is allowed to philosophy
 	 * (while she is not eating).
 	 */
-	public synchronized void requestTalk()
+	public synchronized void requestTalk(final int TID)
 	{
 		// ...
 	}
@@ -58,7 +60,7 @@ public class Monitor
 	 * When one philosopher is done talking stuff, others
 	 * can feel free to start talking.
 	 */
-	public synchronized void endTalk()
+	public synchronized void endTalk(final int TID)
 	{
 		// ...
 	}

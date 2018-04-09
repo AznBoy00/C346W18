@@ -1,3 +1,5 @@
+package Task2;
+
 /**
  * Class DiningPhilosophers
  * The main starter.
@@ -18,7 +20,7 @@ public class DiningPhilosophers
 	public static final int DEFAULT_NUMBER_OF_PHILOSOPHERS = 4;
 
 	/**
-	 * Dining "iterations" per philosopher thread
+	 * Dining "iterations" per philosopher threa
 	 * while they are socializing there
 	 */
 	public static final int DINING_STEPS = 10;

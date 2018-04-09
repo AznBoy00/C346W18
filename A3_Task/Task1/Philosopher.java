@@ -1,4 +1,6 @@
-import common.BaseThread;
+package Task1;
+
+import Task1.common.BaseThread;
 
 /**
  * Class Philosopher.
@@ -51,11 +53,16 @@ public class Philosopher extends BaseThread
 	 */
 	public void think() //TASK 1 THINK METHOD IMPLEMENTATION
 	{
-		System.out.println("Philosopher "+this.iTID+" started THINKING.");
+            try {
+                System.out.println("Philosopher "+this.iTID+" started THINKING.");
 		Thread.yield();
 		sleep((long)(Math.random() * TIME_TO_WASTE));
 		Thread.yield();
 		System.out.println("Philosopher "+this.iTID+" is done THINKING.");
+            } catch (InterruptedException e) {
+                System.out.println("InterruptedException caught. Exiting...");
+                System.exit(1);
+            }
 	}
 
 	/**
@@ -98,7 +105,7 @@ public class Philosopher extends BaseThread
 			 * A decision is made at random whether this particular
 			 * philosopher is about to say something terribly useful.
 			 */
-			if (math.random() > 0.65);      //TASK1
+			if (Math.random() > 0.65);      //TASK1
             {
                 DiningPhilosophers.soMonitor.requestTalk(getTID());
                 talk();
