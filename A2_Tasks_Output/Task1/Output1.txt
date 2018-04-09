@@ -1,0 +1,168 @@
+run:
+Main thread starts executing.
+Initial value of top = 3.
+Initial value of stack top = d.
+Main thread will now fork several threads.
+main(): Three AcquireBlock threads have been created.
+main(): Three ReleaseBlock threads have been created.
+main(): CharStackProber threads have been created: 4
+AcquireBlock thread [TID=1] starts executing.
+BlockManager$AcquireBlock thread [TID=1] starts PHASE I.
+BlockManager$CharStackProber thread [TID=7] starts PHASE I.
+Some stats info in the PHASE I:
+    iTID = 1, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1111
+ReleaseBlock thread [TID=4] starts executing.
+Some stats info in the PHASE I:
+    iTID = 7, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1171
+BlockManager$CharStackProber thread [TID=8] starts PHASE I.
+BlockManager$ReleaseBlock thread [TID=4] starts PHASE I.
+BlockManager$CharStackProber thread [TID=9] starts PHASE I.
+BlockManager$AcquireBlock thread [TID=1] finishes PHASE I.
+AcquireBlock thread [TID=2] starts executing.
+main(): All the threads are ready.
+AcquireBlock thread [TID=1] requests Ms block.
+Some stats info in the PHASE I:
+    iTID = 9, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1191
+AcquireBlock thread [TID=1] has obtained Ms block d from position 3.
+Some stats info in the PHASE I:
+    iTID = 4, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1141
+BlockManager$CharStackProber thread [TID=10] starts PHASE I.
+Some stats info in the PHASE I:
+    iTID = 8, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1181
+BlockManager$CharStackProber thread [TID=7] finishes PHASE I.
+ReleaseBlock thread [TID=5] starts executing.
+Stack Prober [TID=7]: Stack state: BlockManager$CharStackProber thread [TID=8] finishes PHASE I.
+Some stats info in the PHASE I:
+    iTID = 10, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1201
+ReleaseBlock thread [TID=6] starts executing.
+BlockManager$ReleaseBlock thread [TID=4] finishes PHASE I.
+Acq[TID=1]: Current value of top = 2.
+BlockManager$CharStackProber thread [TID=9] finishes PHASE I.
+AcquireBlock thread [TID=3] starts executing.
+BlockManager$AcquireBlock thread [TID=2] starts PHASE I.
+BlockManager$AcquireBlock thread [TID=3] starts PHASE I.
+Stack Prober [TID=9]: Stack state: Acq[TID=1]: Current value of stack top = c.
+ReleaseBlock thread [TID=4] returns Ms block d to position 3.
+BlockManager$ReleaseBlock thread [TID=6] starts PHASE I.
+BlockManager$CharStackProber thread [TID=10] finishes PHASE I.
+Stack Prober [TID=8]: Stack state: [a]BlockManager$ReleaseBlock thread [TID=5] starts PHASE I.
+[b][a]Stack Prober [TID=10]: Stack state: [a][b][c]Some stats info in the PHASE I:
+    iTID = 6, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1161
+Rel[TID=4]: Current value of top = 3.
+BlockManager$AcquireBlock thread [TID=1] starts PHASE II.
+[a][b]Some stats info in the PHASE I:
+    iTID = 3, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1131
+Some stats info in the PHASE I:
+    iTID = 2, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1121
+BlockManager$AcquireBlock thread [TID=3] finishes PHASE I.
+[c]Some stats info in the PHASE II:
+    iTID = 1, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1111
+Rel[TID=4]: Current value of stack top = d.
+BlockManager$ReleaseBlock thread [TID=6] finishes PHASE I.
+(d)[$][$][b][c](d)[$][$].
+Stack Prober [TID=8]: Stack state: [a][b][c][c]Some stats info in the PHASE I:
+    iTID = 5, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1151
+(d)[$][$].
+Stack Prober [TID=7]: Stack state: [a](d)[$][$].
+.
+ReleaseBlock thread [TID=6] returns Ms block e to position 4.
+BlockManager$ReleaseBlock thread [TID=4] starts PHASE II.
+BlockManager$AcquireBlock thread [TID=1] finishes PHASE II.
+(d)(e)AcquireBlock thread [TID=3] requests Ms block.
+BlockManager$AcquireBlock thread [TID=2] finishes PHASE I.
+AcquireBlock thread [TID=2] requests Ms block.
+AcquireBlock thread [TID=2] has obtained Ms block d from position 3.
+Acq[TID=2]: Current value of top = 2.
+Acq[TID=2]: Current value of stack top = c.
+BlockManager$AcquireBlock thread [TID=2] starts PHASE II.
+AcquireBlock thread [TID=3] has obtained Ms block e from position 4.
+[$].
+AcquireBlock thread [TID=1] terminates.
+Some stats info in the PHASE II:
+    iTID = 4, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1141
+Rel[TID=6]: Current value of top = 4.
+Stack Prober [TID=10]: Stack state: Stack Prober [TID=8]: Stack state: [a][b](c)[$][$][$].
+[b](c)[$][$][$].
+Stack Prober [TID=7]: Stack state: [a]BlockManager$ReleaseBlock thread [TID=5] finishes PHASE I.
+[b]Stack Prober [TID=10]: Stack state: [a][b](c)[$][$][$].
+[a][b](c)[$]Rel[TID=6]: Current value of stack top = c.
+BlockManager$ReleaseBlock thread [TID=4] finishes PHASE II.
+Stack Prober [TID=9]: Stack state: [a]Acq[TID=3]: Current value of top = 2.
+Some stats info in the PHASE II:
+    iTID = 2, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1121
+Acq[TID=3]: Current value of stack top = c.
+BlockManager$AcquireBlock thread [TID=3] starts PHASE II.
+[b](c)[$]ReleaseBlock thread [TID=4] terminates.
+BlockManager$ReleaseBlock thread [TID=6] starts PHASE II.
+[$]Stack Prober [TID=10]: Stack state: [a][b](c)[$][$][$].
+ReleaseBlock thread [TID=5] returns Ms block d to position 3.
+Stack Prober [TID=7]: Stack state: [a][b][c](d)[$][$].
+Stack Prober [TID=7]: Stack state: [a][b][c](d)[$][$].
+(c)(d)[$][$].
+[$]Some stats info in the PHASE II:
+    iTID = 6, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1161
+[$][$].
+Some stats info in the PHASE II:
+    iTID = 3, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1131
+BlockManager$AcquireBlock thread [TID=3] finishes PHASE II.
+BlockManager$AcquireBlock thread [TID=2] finishes PHASE II.
+AcquireBlock thread [TID=3] terminates.
+Stack Prober [TID=9]: Stack state: [a][b][c](d)[$][$].
+Stack Prober [TID=9]: Stack state: [a]BlockManager$ReleaseBlock thread [TID=6] finishes PHASE II.
+.
+Stack Prober [TID=10]: Stack state: [a][b][c](d)[$][$].
+BlockManager$CharStackProber thread [TID=7] starts PHASE II.
+Rel[TID=5]: Current value of top = 3.
+Some stats info in the PHASE II:
+    iTID = 7, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1171
+BlockManager$CharStackProber thread [TID=7] finishes PHASE II.
+BlockManager$CharStackProber thread [TID=10] starts PHASE II.
+Stack Prober [TID=8]: Stack state: [a][b][c](d)[$][$].
+ReleaseBlock thread [TID=6] terminates.
+[b][c](d)[$][$].
+AcquireBlock thread [TID=2] terminates.
+Stack Prober [TID=9]: Stack state: [a]Stack Prober [TID=8]: Stack state: [a][b][c](d)[$][$].
+Some stats info in the PHASE II:
+    iTID = 10, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1201
+Rel[TID=5]: Current value of stack top = d.
+BlockManager$CharStackProber thread [TID=10] finishes PHASE II.
+BlockManager$CharStackProber thread [TID=8] starts PHASE II.
+[b][c](d)[$][$].
+Some stats info in the PHASE II:
+    iTID = 8, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1181
+BlockManager$CharStackProber thread [TID=8] finishes PHASE II.
+BlockManager$ReleaseBlock thread [TID=5] starts PHASE II.
+BlockManager$CharStackProber thread [TID=9] starts PHASE II.
+Some stats info in the PHASE II:
+    iTID = 5, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1151
+BlockManager$ReleaseBlock thread [TID=5] finishes PHASE II.
+ReleaseBlock thread [TID=5] terminates.
+Some stats info in the PHASE II:
+    iTID = 9, siNextTID = 11, siTurn = 1.
+    Their "checksum": 1191
+BlockManager$CharStackProber thread [TID=9] finishes PHASE II.
+System terminates normally.
+Final value of top = 3.
+Final value of stack top = d.
+Final value of stack top-1 = c.
+Stack access count = 138
+BUILD SUCCESSFUL (total time: 0 seconds)
