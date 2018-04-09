@@ -100,19 +100,23 @@ public class DiningPhilosophers {
     public static int newPhilosopherNumber() {
         try {
             Scanner input = new Scanner(System.in);
-            System.out.println("Please input a positive number of philosopher (greater than 1) you want to spawn. (Default value is 4)");
+            System.out.println("Please input a positive number of philosopher (at least 2) you want to spawn. (Default value is 4)");
             String parseString = input.nextLine();
             input.close();
             int newPhilosopherNumber = Integer.parseInt(parseString);
 
-            if (newPhilosopherNumber < 2) {
+            if (newPhilosopherNumber < 1) {
                 System.out.println(
                         '"' + parseString + '"' + " is not a positive decimal integer"
                         + "\nUsage: java DiningPhilosophers " + DEFAULT_NUMBER_OF_PHILOSOPHERS
                 );
                 //return DEFAULT_NUMBER_OF_PHILOSOPHERS;
                 System.exit(1);
-            } else {
+            } else if(newPhilosopherNumber == 1){
+            	System.out.println("I guess you can't read the guidelines...Philosophers can't be alone");
+            	System.exit(1);
+            	
+            }else {
                 return newPhilosopherNumber;
             }
         } catch (NumberFormatException e) {

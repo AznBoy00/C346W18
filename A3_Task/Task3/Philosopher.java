@@ -94,23 +94,12 @@ public class Philosopher extends BaseThread {
                 * A decision is made at random whether this particular
                 * philosopher is about to say something terribly useful.
                  */
-                if (Math.random() > 0.65);      //TASK1
+                if (Math.random() > 0.65);      //TASK1 (probability a philosopher would like to say something)
                 {
                     DiningPhilosophers.soMonitor.requestTalk(getTID());
                     talk();
                     DiningPhilosophers.soMonitor.endTalk(getTID());
                 }
-                /*
-                try{
-                DiningPhilosophers.soMonitor.requestTalk(getTID());
-                }
-                catch(InterruptedException e)
-                {
-                e.printStackTrace();
-                }
-                talk();
-                DiningPhilosophers.soMonitor.endTalk();
-                 */
 
                 yield();
             } catch (InterruptedException e) {
