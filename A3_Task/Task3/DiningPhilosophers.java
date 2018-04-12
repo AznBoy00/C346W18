@@ -70,7 +70,9 @@ public class DiningPhilosophers {
             for (int j = 0; j < iPhilosophers; j++) {
                 aoPhilosophers[j].join();
             }
-
+            for (int i = 0; i < iPhilosophers; i++) {
+                System.out.println("Philosopher " + (i+1) + " ate a total of " + aoPhilosophers[i].getEatTracker() + " times.");
+            }
             System.out.println("All philosophers have left. System terminates normally.");
         } catch (InterruptedException e) {
             System.err.println("main():");
