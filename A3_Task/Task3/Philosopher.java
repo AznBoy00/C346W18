@@ -17,6 +17,11 @@ public class Philosopher extends BaseThread {
     public static final long TIME_TO_WASTE = 1000;
 
     /**
+     * Int tracking the number of times the philosopher ate so that we can track if starvation exists.
+     */
+    private int eatTracker = 0;
+
+    /**
      * The act of eating. - Print the fact that a given phil (their TID) has
      * started eating. - yield - Then sleep() for a random interval. - yield -
      * The print that they are done eating.
@@ -25,11 +30,13 @@ public class Philosopher extends BaseThread {
     {
         try {
             // ...
+            eatTracker++;
             System.out.println("Philosopher " + this.iTID + " has started EATING.");
             Thread.yield();
             sleep((long) (Math.random() * TIME_TO_WASTE));
             Thread.yield();
             System.out.println("Philosopher " + this.iTID + " is done eating.");
+            System.out.println("Philosopher " + this.iTID + " ate " + eatTracker + " times.");
             // ...
         } catch (InterruptedException e) {
             System.err.println("Philosopher.eat():");
@@ -115,18 +122,22 @@ public class Philosopher extends BaseThread {
      */
     public void saySomething() {
         String[] astrPhrases
-                = {
-                    "Eh, it's not easy to be a philosopher: eat, think, talk, eat...",
-                    "You know, true is false and false is true if you think of it",
-                    "2 + 2 = 5 for extremely large values of 2...",
-                    "If thee cannot speak, thee must be silent",
-                    "My number is " + getTID() + ""
-                };
+                =   {
+                        "Eh, it's not easy to be a philosopher: eat, think, talk, eat...",
+                        "You know, true is false and false is true if you think of it",
+                        "2 + 2 = 5 for extremely large values of 2...",
+                        "If thee cannot speak, thee must be silent",
+                        "My number is " + getTID() + ""
+                    };
 
         System.out.println(
                 "Philosopher " + getTID() + " says: "
                 + astrPhrases[(int) (Math.random() * astrPhrases.length)]
         );
+    }
+
+    public int getEatTracker() {
+        return eatTracker;
     }
 }
 
